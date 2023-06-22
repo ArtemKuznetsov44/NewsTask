@@ -13,7 +13,8 @@ class m230621_202114_create_category_table extends Migration
     public function safeUp()
     {
         $this->createTable('{{%category}}', [
-            'id' => $this->primaryKey(),
+            'id' => $this->primaryKey()->comment('category_id'),
+            'name' => $this->string()->notNull()->unique()->comment('category_title')
         ]);
     }
 
