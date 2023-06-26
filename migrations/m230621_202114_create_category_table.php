@@ -14,8 +14,19 @@ class m230621_202114_create_category_table extends Migration
     {
         $this->createTable('{{%category}}', [
             'id' => $this->primaryKey()->comment('category_id'),
-            'name' => $this->string()->notNull()->unique()->comment('category_title')
+            'title' => $this->string()->notNull()->unique()->comment('category_title'),
+            'parent_cat_id' => $this->integer()->unique()->comment('Parent category id')
         ]);
+
+        $this->addForeignKey(
+            'fk_category_parent_cat_id',
+            'category',
+            'parent_cat_id',
+            'category',
+            'id',
+            'CASCADE'
+        );
+
     }
 
     /**
@@ -23,6 +34,7 @@ class m230621_202114_create_category_table extends Migration
      */
     public function safeDown()
     {
+        $this->dropForeignKey('fk_category_parent_cat_id','{{%category}}' );
         $this->dropTable('{{%category}}');
     }
 }

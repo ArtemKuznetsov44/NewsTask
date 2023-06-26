@@ -46,9 +46,21 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [],
-        ],
+            'rules' => [
+                '' => 'news/index',
+                'news/page/<page:\d+>' => 'news/index',
+                'news/' => 'news/index',
+                'news/delete/<news_id:\d+>' => 'news/delete',
+                'news/update/<news_id:\d+>' => 'news/update',
+                'news/logout' => 'news/logout',
+                'news/update-category<category:\d+>' => 'news/update-category',
+                'news/create-category' => 'news/create-category',
+                'news/create' => 'news/create',
 
+                'news/login' => 'news/login',
+                'news/<news_title>' => 'news/view',
+            ],
+        ],
     ],
     'params' => $params,
 ];
