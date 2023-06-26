@@ -15,7 +15,9 @@ class m230622_082727_create_news_table extends Migration
     {
         $this->createTable('{{%news}}', [
             'id' => $this->primaryKey(),
-            'content' => $this->json()->notNull()->comment('Two fields: "title", "mainContent"'),
+            'link_url' => $this->text()->comment('Link to full news'),
+            'title' => $this->text()->notNull()->unique()->comment('The title of current news'),
+            'main_content' => $this->text()->comment('Base content of news'),
             'is_active' => $this->boolean()->defaultValue(true)->comment('Is current news published or not'),
             'created_at' => $this->integer()->notNull()->comment('Time of creation'),
             'updated_at' => $this->integer()->comment('Time of last modification'),
