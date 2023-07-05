@@ -1,77 +1,85 @@
-
-
-.main-container {
+.current-news-container {
     display: grid;
-    grid-template-rows: auto auto;
-    row-gap: 10px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    width: 80%;
+    grid-template-rows: 150px auto auto;
+    row-gap: 5px;
+    height: 100%;
 }
 
-.options {
-    margin-top: 10px;
-    margin-bottom: 10px;
+.title-options {
+    grid-row: 1;
+    background-color: #404040;
+    padding: 10px;
+    color: white;
+    border-radius: 10px 10px 0px 0px;
+}
+.title-options > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.title-options > div a {
+    display: flex;
+    flex: 1 1;
+    width: 100%;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px 0px 5px 0px;
+    border-radius: 5px;
+
+}
+.link-button-delete {
+    background-color: #c55;
+}
+.link-button-update {
+    background-color: #0a58ca;
+}
+
+.link-button-delete:hover {
+    background-color: #722e2e;
+}
+.link-button-update:hover {
+    background-color: #0d3475;
+}
+
+.main-container-body {
+    grid-row: 2;
+    background-color: #404040;
+    padding: 10px;
+    color: white;
+}
+
+.comments-section {
+    grid-row: 3;
+    background-color: #404040;
+    padding: 10px;
+    border-radius: 0px 0px 10px 10px;
+    color: white;
+}
+
+.prev-comments {
+    max-height: 110px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.one-comment {
+    min-height: 50px;
+    background-color: #202020;
+    display: flex;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
 }
 
 
 img {
     max-width: 100%;
     max-height: 100%;
-    border-radius: 20px;
-
-}
-
-.main-container-head {
-    grid-row: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 100%;
-    border-radius: 20px 20px 0 0;
-    background-color: #c0c0c0;
-    height: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-.link-button {
-    padding: 5px 10px 5px 10px;
-    border: 2px solid white;
-    background-color: #171717;
-    text-decoration: none;
-    color: white;
-    border-radius: 10px;
-}
-.link-button:hover {
-    background-color: #0d6efd;
-    transition: 0.5s easy;
-    color: white;
-}
-
-.main-container-body {
-    grid-row: 2;
-    max-width: 100%;
-    margin-bottom: 100px;
-    padding-left: 20px;
-    padding-right: 20px;
-    background-color: #c0c0c0;
-    border-radius: 0 0 20px 20px;
-}
-.prev-comments {
-    max-height: 120px;
-    overflow-y: scroll;
-}
-.one-comment {
-    height: 45px;
-    background-color: #404040;
-    border-radius: 15px;
-    vertical-align: middle;
-    padding-left: 20px;
-    margin: 5px 0 5px 0;
-    color: white;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
 }

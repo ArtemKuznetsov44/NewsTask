@@ -7,6 +7,13 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 
+/**
+ * @property int $id;
+ * @property string $context;
+ * @property int $news_id;
+ * @property int $created_at;
+*/
+
 class Comment extends ActiveRecord {
 
     public static function tableName(): string
@@ -27,10 +34,10 @@ class Comment extends ActiveRecord {
     public function attributeLabels(): array
     {
         return [
-            'id' => 'Comment Id',
-            'news_id' => 'News Id for current comment',
-            'context' => 'Comment Body',
-            'created_at' => 'Comment creation time',
+            'id' => 'Идентификатор комментария',
+            'news_id' => 'Идентификатор новости',
+            'context' => 'Содержание',
+            'created_at' => 'Время создания'
         ];
     }
 }

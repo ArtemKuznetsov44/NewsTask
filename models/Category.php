@@ -22,17 +22,18 @@ class Category extends ActiveRecord
     public function rules(): array
     {
         return [
-            ['id', 'integer'],
-            ['parent_cat_id', 'integer'],
             ['title', 'required'],
+            ['title', 'string', 'min' => 2, 'tooShort' => 'Title is too small!'],
+            ['parent_cat_id', 'exist', 'skipOnEmpty' => true, 'targetClass' => Category::class, 'targetAttribute' => ['parent_cat_id' => 'id']]
         ];
     }
 
     public function attributeLabels(): array
     {
         return [
-            'id' => 'Category Id',
-            'title' => 'Category Title',
+            'id' => 'Идентификатор категории',
+            'title' => 'Название категории',
+            'parent_cat_id' => "Родительская категория"
         ];
     }
 

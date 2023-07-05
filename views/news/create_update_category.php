@@ -8,7 +8,7 @@ $this->title = 'Create | Update category';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<?php $form = ActiveForm::begin(); ?>
+<?php $form = ActiveForm::begin(['options'=> ['class' => 'create-update-form']]); ?>
 <?= $form->field($model, 'title')->textInput(['class'=>'form-control']); ?>
 <?= $form->field($model, 'parent_cat_id')->dropDownList(Category::getListItems(),
     [

@@ -20,7 +20,7 @@
         "yiisoft/yii2-symfonymailer": "~2.0.3",
         "imangazaliev/didom": "^2.0",
         "sunra/php-simple-html-dom-parser": "^1.5",
-      "ext-curl": "*",
+        "ext-curl": "*",
         "guzzlehttp/guzzle": "^7.7"
     },
     "require-dev": {

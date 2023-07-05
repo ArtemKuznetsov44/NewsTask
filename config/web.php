@@ -15,6 +15,7 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'rwo9gvSM0gqcqd8T4phu-YT6qKaYg2JG',
+            'baseUrl' => '',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -47,18 +48,24 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '' => 'news/index',
-                'news/page/<page:\d+>' => 'news/index',
-                'news/' => 'news/index',
-                'news/delete/<news_id:\d+>' => 'news/delete',
-                'news/update/<news_id:\d+>' => 'news/update',
-                'news/logout' => 'news/logout',
-                'news/update-category<category:\d+>' => 'news/update-category',
-                'news/create-category' => 'news/create-category',
-                'news/create' => 'news/create',
 
-                'news/login' => 'news/login',
+                '' => 'news/index',
+                '<controller>/<action>' => '<controller>/<action>',
+                'news/create-update-category/<category_id:\d+>' => 'news/create-update-category',
                 'news/<news_title>' => 'news/view',
+
+//                '' => 'news/index',
+//                'news/page/<page:\d+>' => 'news/index',
+//                'news/' => 'news/index',
+//                'news/<news_title>' => 'news/view',
+//                'news/create-update/<news_id:\d+>' => 'news/create-update',
+
+//                'news/create-update-category' => 'news/create-update-category',
+//
+//                'news/delete/<news_id:\d+>' => 'news/delete',
+//                'news/logout' => 'news/logout',
+//                'news/login' => 'news/login',
+
             ],
         ],
     ],

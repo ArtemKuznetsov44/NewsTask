@@ -18,21 +18,21 @@ use yii\db\Expression;
  * @property int $category_id;
  *
  * @property Category $category;
- * @
+ * @property Comment[] $comments;
+ *
  */
 class News extends ActiveRecord
 {
-
-//    public function behaviors(): array
-//    {
-//        return [
-//            [
-//                'class' => TimestampBehavior::class,
-//                'createdAtAttribute' => 'created_at',
-//                'updatedAtAttribute' => 'updated_at',
-//            ]
-//        ];
-//    }
+    public function behaviors(): array
+    {
+        return [
+            [
+                'class' => TimestampBehavior::class,
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+            ]
+        ];
+    }
 
 
     public static function tableName(): string
@@ -43,30 +43,34 @@ class News extends ActiveRecord
     public function rules(): array
     {
         return [
-            [['id', 'category_id'], 'integer'],
-            [['category_id', 'title'], 'required'],
+            ['category_id', 'required'],
+            ['title', 'required'],
             ['main_content', 'trim'],
             ['link_url', 'match', 'pattern' => '/^(https?|ftp):\/\/[^\s\/$.?#].[^\s]*$/i', 'message' => 'Invalid URL format.'],
-            ['category_id', 'exist', 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']]
+            ['category_id', 'exist', 'skipOnEmpty' => true , 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['category_id' => 'id']]
         ];
     }
 
     public function attributeLabels(): array
     {
         return [
-            'id' => 'News Id',
-            'link_url' => 'Link to news page',
-            'title' => 'The title of current news',
-            'main_content' => 'Base content of news',
-            'is_active' => 'Is Active',
-            'created_at' => 'Creation Time',
-            'updated_at' => 'Last Modification Time',
-            'category_id' => 'Category Id',
+            'id' => 'Идентификатор новости',
+            'link_url' => 'Ссылка на источник',
+            'title' => 'Заголовок новости',
+            'main_content' => 'Основное содержания новости',
+            'is_active' => 'Активна',
+            'created_at' => 'Время создания',
+            'updated_at' => 'Время последнего изменения',
+            'category_id' => 'Идентификатор категории',
         ];
     }
 
     public function getCategory(): ActiveQuery
     {
         return $this->hasOne(Category::class, ['id' => 'category_id']);
+    }
+
+    public function getComments() : ActiveQuery {
+        return $this->hasMany(Comment::class, ['news_id' => 'id']);
     }
 }
