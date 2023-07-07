@@ -28,6 +28,7 @@ body {
     color: white;
     background-color: #202020;
     border-right: 2px solid white;;
+
 }
 
 
@@ -92,6 +93,7 @@ body {
     height: 100%;
     border-bottom: 2px solid white;
     background-color: #171717;
+
 
 }
 .left-menu ul {
@@ -166,15 +168,38 @@ body {
 /*    padding-top: 7px;*/
 /*    color: rgba(255, 255, 255, 0.5);*/
 /*}*/
+#burger-icon {
+    position: absolute;
+    top: 15px;
+    right: 5px;
+    z-index: 100;
 
-@media(max-width:767px) {
-    .nav li > form > button.logout {
-        display:block;
-        text-align: left;
-        width: 100%;
-        padding: 10px 0;
+
+    display: none;
+}
+
+@media (max-width: 1230px) {
+    .left-menu {
+       visibility: hidden;
+       width: 100vw;
+       z-index: 5;
+    }
+    .right-part {
+        width: 100vw;
+        left: 0;
+    }
+    #burger-icon {
+        display: block;
     }
 }
+@media (min-width: 1230px){
+    .left-menu {
+        visibility: visible !important;
+        width: 25vw;
+        z-index: 0;
+    }
+}
+
 a:hover {
     text-decoration:none;
     color: white;

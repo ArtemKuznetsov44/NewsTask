@@ -50,6 +50,9 @@ foreach (Category::find()->select(['id', 'title'])->asArray()->all() as $categor
 </header>
 
 <div id="main">
+    <div id="burger-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="white" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </div>
     <div class="left-menu">
         <div class="title-actions">
             <h2> <?= Html::a('News', ['news/index'], ['style' => 'text-decoration:none; color: white;']); ?> </h2>
